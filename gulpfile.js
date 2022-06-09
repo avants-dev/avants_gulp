@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
+const ttf2woff2 = require('gulp-ttf2woff2');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const gcmq = require('gulp-group-css-media-queries');
@@ -123,6 +124,7 @@ function img() {
 //fonts
 function fonts() {
     return gulp.src(paths.fonts.src)
+        .pipe(ttf2woff2())
         .pipe(gulp.dest(paths.fonts.dest))
         .pipe(size({
             showFiles: true
@@ -152,4 +154,4 @@ exports.scripts = scripts;
 exports.watch = watch;
 exports.fonts = fonts;
 
-exports.default = gulp.series(clean, html, gulp.parallel(styles, scripts, img, fonts), watch);
+exports.default = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch);
