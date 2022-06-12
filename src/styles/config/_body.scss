@@ -1,0 +1,8 @@
+body {
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  font-family: $base-font;
+  color: get-color('text');
+  background-color: get-color('background');
+}

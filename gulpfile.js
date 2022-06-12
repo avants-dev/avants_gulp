@@ -22,7 +22,7 @@ const del = require('del');
 //path
 const paths = {
     html: {
-        src: 'src/**.html',
+        src: 'src/**/*.html',
         dest: 'dist'
     },
     styles: {
@@ -45,7 +45,7 @@ const paths = {
 
 //deleting dist folder, delete all except images
 function clean() {
-    return del(['dist/*', '!dist/images'])
+    return del(['dist/*', '!dist/images', '!dist/fonts'])
 }
 
 //template
@@ -65,7 +65,9 @@ function html() {
 function styles() {
     return gulp.src(paths.styles.src)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: ['node_modules']
+        }).on('error', sass.logError))
         .pipe(gcmq())
         .pipe(autoprefixer({
             cascade: false

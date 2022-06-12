@@ -1,0 +1,60 @@
+$base-color-variant: "base" !default;
+
+$opacity-levels: (
+        "light": 0.8,
+        "dark": 0.4,
+);
+
+$color-palette: (
+        "text": (
+                "base": #BCBCBC,
+        ),
+        "accent": (
+                "base": #d98328,
+                "light": #dd8f3d,
+                "dark": #c57623
+        ),
+        "secondary": (
+                "base": #5a1321,
+                "light": #7b1a2d,
+                "dark": #51111e
+        ),
+        "foreground": (
+                "base": #191919,
+                "light": #333333,
+                "dark": #111111,
+                "darker": #000000
+        ),
+        "background": (
+                "base": #1E1E1E,
+                "light": #ffffff,
+                "dark": #dddddd
+        )
+  // ... etc.
+);
+
+@function get-color(
+  $name: "primary",
+  $variant: $base-color-variant,
+  $opacity: 1
+) {
+  $color: null;
+
+  // Get the color spectrum
+  $color-spectrum: map-get($color-palette, $name);
+
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+
+  // Get the alpha setting
+  $alpha: if(type-of($opacity) == "number", $opacity, map-get($opacity-levels, $opacity));
+
+  // Set the alpha of the color
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+
+  @return $color;
+}

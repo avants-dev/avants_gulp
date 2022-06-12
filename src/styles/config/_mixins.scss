@@ -2,7 +2,7 @@
   @font-face {
     font-family: "#{$name}";
     src: local("#{$file}"),
-    url('../fonts/#{$file}.woff2') format('woff2'),
+    url('../fonts/#{$file}') format('woff2'),
     url('../fonts/#{$file}.woff') format('woff');
     font-weight: $weight;
     font-style: $style;
@@ -14,7 +14,7 @@
   @font-face {
     font-family: "#{$name}";
     src: local("#{$file}"),
-    url('../fonts/#{$file}.woff2') format('woff2'),
+    url('../fonts/#{$file}') format('woff2'),
     url('../fonts/#{$file}.woff') format('woff');
     font-weight: $weight;
     font-style: $style;

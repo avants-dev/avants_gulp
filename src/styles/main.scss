@@ -1,14 +1,9 @@
+@import "normalize.css/normalize";
 @import "config/mixins";
 @import "config/fonts";
-@import "config/value";
-@import "global/btn";
-@import "global/icon";
-@import "global/link";
-
-
-body {
-  font-family: $base-font;
-  h1 {
-    color: red;
-  }
-}
+@import "config/values";
+@import "global/buttons";
+@import "global/icons";
+@import "global/links";
+@import "config/palette";
+@import "config/body";
